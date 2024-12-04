@@ -1,4 +1,4 @@
-package org.github.anlac96;
+package org.github.anlac96.cleanrestserviceprototype.book;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
