@@ -1,11 +1,13 @@
 package org.github.anlac96.cleanrestserviceprototype.book.impl;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import org.github.anlac96.cleanrestserviceprototype.book.model.Book;
 import org.github.anlac96.cleanrestserviceprototype.book.repo.BookRepository;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+@ApplicationScoped
 public class InMemoryBookRepository implements BookRepository {
 
     private final Map<String, Book> bookStore = new ConcurrentHashMap<>();

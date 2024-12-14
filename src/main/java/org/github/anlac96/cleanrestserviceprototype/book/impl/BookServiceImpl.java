@@ -1,5 +1,6 @@
 package org.github.anlac96.cleanrestserviceprototype.book.impl;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import org.github.anlac96.cleanrestserviceprototype.book.model.Book;
 import org.github.anlac96.cleanrestserviceprototype.book.repo.BookRepository;
 import org.github.anlac96.cleanrestserviceprototype.book.service.BookService;
@@ -7,6 +8,7 @@ import org.github.anlac96.cleanrestserviceprototype.book.service.BookService;
 import java.util.List;
 import java.util.Optional;
 
+@ApplicationScoped
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
