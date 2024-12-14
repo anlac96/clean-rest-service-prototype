@@ -7,6 +7,7 @@ import org.github.anlac96.cleanrestserviceprototype.book.service.BookService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @ApplicationScoped
 public class BookServiceImpl implements BookService {
@@ -19,6 +20,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book createBook(Book book) {
+        book.setBookId(UUID.randomUUID().toString());
         return bookRepository.create(book);
     }
 

@@ -5,6 +5,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.github.anlac96.cleanrestserviceprototype.book.model.Book;
+import org.github.anlac96.cleanrestserviceprototype.book.restapi.converter.BookRequestConverter;
+import org.github.anlac96.cleanrestserviceprototype.book.restapi.dto.CreateBookRequest;
 import org.github.anlac96.cleanrestserviceprototype.book.service.BookService;
 
 import java.util.List;
@@ -22,8 +24,9 @@ public class BookApi {
     }
 
     @POST
-    public Response createBook(Book book) {
-        Book createdBook = bookService.createBook(book);
+    public Response createBook(CreateBookRequest book) {
+        Book bookEntity = BookRequestConverter.INSTANCE.toBook(book);
+        Book createdBook = bookService.createBook(bookEntity);
         return Response.status(Response.Status.CREATED).entity(createdBook).build();
     }
 
