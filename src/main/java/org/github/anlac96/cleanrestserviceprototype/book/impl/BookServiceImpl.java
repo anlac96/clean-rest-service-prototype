@@ -1,7 +1,8 @@
-package org.github.anlac96.cleanrestserviceprototype.book.service;
+package org.github.anlac96.cleanrestserviceprototype.book.impl;
 
 import org.github.anlac96.cleanrestserviceprototype.book.model.Book;
 import org.github.anlac96.cleanrestserviceprototype.book.repo.BookRepository;
+import org.github.anlac96.cleanrestserviceprototype.book.service.BookService;
 
 import java.util.List;
 import java.util.Optional;
