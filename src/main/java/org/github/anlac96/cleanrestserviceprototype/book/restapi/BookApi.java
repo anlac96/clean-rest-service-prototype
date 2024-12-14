@@ -1,12 +1,12 @@
 package org.github.anlac96.cleanrestserviceprototype.book.restapi;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.github.anlac96.cleanrestserviceprototype.book.model.Book;
 import org.github.anlac96.cleanrestserviceprototype.book.restapi.converter.BookRequestConverter;
 import org.github.anlac96.cleanrestserviceprototype.book.restapi.dto.CreateBookRequest;
+import org.github.anlac96.cleanrestserviceprototype.book.restapi.dto.UpdateBookRequest;
 import org.github.anlac96.cleanrestserviceprototype.book.service.BookService;
 
 import java.util.List;
@@ -49,9 +49,11 @@ public class BookApi {
 
     @PUT
     @Path("/{bookId}")
-    public Response updateBook(Book book) {
+    public Response updateBook(String bookId, UpdateBookRequest book) {
         try {
-            Book updatedBook = bookService.updateBook(book);
+            Book bookEntity = BookRequestConverter.INSTANCE.toBook(book);
+            bookEntity.setBookId(bookId);
+            Book updatedBook = bookService.updateBook(bookEntity);
             return Response.ok(updatedBook).build();
         } catch (IllegalArgumentException e) {
             return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
