@@ -49,7 +49,7 @@ public class BookApi {
 
     @PUT
     @Path("/{bookId}")
-    public Response updateBook(String bookId, UpdateBookRequest book) {
+    public Response updateBook(@PathParam("bookId") String bookId, UpdateBookRequest book) {
         try {
             Book bookEntity = BookRequestConverter.INSTANCE.toBook(book);
             bookEntity.setBookId(bookId);
